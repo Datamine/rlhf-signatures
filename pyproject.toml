@@ -1,0 +1,55 @@
+[project]
+name = "rlhf-signatures"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=0.45.2",
+    "openai>=1.63.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+# Allow autofix for all enabled rules (when `--fix`) is provided.
+fixable = ["A", "B", "C", "D", "E", "F"]
+unfixable = []
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    # not interested in docstring linting
+    "D100",
+    "D105",
+    "D107",
+    "D200",
+    "D203",
+    "D212",
+    "D400",
+    "D406",
+    "D407",
+    "D415",
+    "D403",
+    "ERA001", # flag commented-out code
+    "TD002", # missing issue link after TODO
+    "TD003", # TODO should start with an uppercase word
+    "T201" # flag print statements
+]
+
+[tool.mypy]
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_subclassing_any = true
+# ignore_missing_imports = true
+no_implicit_optional = true
+no_implicit_reexport = true
+show_error_codes = true
+strict = true
+strict_equality = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unreachable = true
+warn_unused_configs = true
+
+# set lint.mccabe for max-complexity?
