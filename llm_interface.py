@@ -1,9 +1,33 @@
 import os
 
+import anthropic
 from openai import OpenAI
 
 
-class OpenAIClient:
+class GeneralClient:
+    """
+    Simple class for other clients to inherit from
+    """
+
+    def __init__(self) -> None:
+        pass
+
+    def call_model(self, message: str, model: str) -> str | None:
+        """
+        Abstract method to be implemented by subclasses.
+        """
+        error_code = "Subclasses must implement call_model()"
+        raise NotImplementedError(error_code)
+
+    def test(self, model: str) -> None:
+        """
+        Test whether a given API integration is working for a given model
+        """
+        reply = self.call_model("How are you today?", model)
+        print(model, "\t", reply)
+
+
+class OpenAIClient(GeneralClient):
     """
     Interface for OpenAI-schema APIs
     """
@@ -39,16 +63,40 @@ class DeepSeekClient(OpenAIClient):
         super().__init__(api_key="DEEPSEEK_API_KEY", base_url="https://api.deepseek.com")
 
 
+class AnthropicClient(GeneralClient):
+    """
+    Interface for Anthropic LLMs
+    """
+
+    def __init__(self) -> None:
+        self.client = anthropic.Anthropic(
+            api_key=os.environ["ANTHROPIC_API_KEY"],
+        )
+
+    def call_model(self, message: str, model: str) -> str:
+        """
+        Call model, provide LLM response
+        """
+        response = self.client.messages.create(
+            model=model,
+            max_tokens=1024,
+            messages=[{"role": "user", "content": message}],
+        )
+        return response.content[0].text  # type: ignore[union-attr]
+
+
 OPENAI = OpenAIClient()
 DEEPSEEK = DeepSeekClient()
+ANTHROPIC = AnthropicClient()
 
 
 def test_clients() -> None:
     """
     Test out the integrations
     """
-    print("GPT-4o", OPENAI.call_model("How are you today?", "gpt-4o"))
-    print("Deepseek-chat", DEEPSEEK.call_model("How are you today?", "deepseek-chat"))
+    OPENAI.test("gpt-4o")
+    DEEPSEEK.test("deepseek-chat")
+    ANTHROPIC.test("claude-3-5-sonnet-20241022")
 
 
 if __name__ == "__main__":
