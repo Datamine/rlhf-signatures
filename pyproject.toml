@@ -6,7 +6,9 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "anthropic>=0.45.2",
+    "google-genai>=1.2.0",
     "openai>=1.63.0",
+    "together>=1.4.1",
 ]
 
 [tool.ruff]
@@ -34,14 +36,15 @@ ignore = [
     "ERA001", # flag commented-out code
     "TD002", # missing issue link after TODO
     "TD003", # TODO should start with an uppercase word
-    "T201" # flag print statements
+    "T201", # flag print statements
+    "PTH", # encourage use of Pathlib over os.path
 ]
 
 [tool.mypy]
 check_untyped_defs = true
 disallow_any_generics = true
 disallow_subclassing_any = true
-# ignore_missing_imports = true
+ignore_missing_imports = true
 no_implicit_optional = true
 no_implicit_reexport = true
 show_error_codes = true
