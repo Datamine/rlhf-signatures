@@ -30,7 +30,8 @@ ignore = [
     "T201", # flag print statements
     "PTH", # encourage use of Pathlib over os.path
     "UP007", # bad new union type annotation
-    "PLR0913", # too many arguments to function def
+    "PLR0913", # too many arguments to function def,
+    "PD901", # dont call dfs df
 ]
 
 [tool.mypy]

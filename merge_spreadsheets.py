@@ -31,7 +31,7 @@ answers_df = answers_df[answers_df["Question"].str.lower() != "question"]
 
 # --- Step 4: Merge the answers into the questions DataFrame ---
 # Use a left join so that every question is retained.
-merged_df = pd.merge(questions_df, answers_df, on="Question", how="left")
+merged_df = questions_df.merge(answers_df, on="Question", how="left")
 
 # --- Step 5: Write the merged DataFrame to a new CSV file ---
 merged_df.to_csv(output_file, index=False)
