@@ -11,8 +11,8 @@ class GeneralClient:
     Simple class for other clients to inherit from
     """
 
-    def __init__(self) -> None:
-        pass
+    def __init__(self, model: str) -> None:
+        self.model = model
 
     def call_model(self, message: str, model: Optional[str] = None) -> str | None:
         """
@@ -25,8 +25,12 @@ class GeneralClient:
         """
         Test whether a given API integration is working for a given model
         """
-        reply = self.call_model("How are you today?", model)
-        print(model, "\t", reply)
+        reply = self.call_model(
+            "What is the more delicious food, Jollof Rice or Pepperoni Pizza? "
+            "Answer with only and exactly one of these two options.",
+            model,
+        )
+        print(model or self.model, "\t", reply)
 
 
 class OpenAIClient(GeneralClient):
@@ -128,34 +132,32 @@ class GoogleClient(GeneralClient):
 
 
 OPENAI_GPT_4O = OpenAIClient("gpt-4o")
-OPENAI_O1 = OpenAIClient("gpt-o1")
-# Also known as Deepseek-V3
+OPENAI_O1 = OpenAIClient("o1")
 DEEPSEEK_V3 = DeepSeekClient("deepseek-chat")
-# Also known as Deepseek-R1
-DEEPSEEK_R1 = DeepSeekClient("deepseek-chat")
+DEEPSEEK_R1 = DeepSeekClient("deepseek-reasoner")
 CLAUDE_35 = AnthropicClient("claude-3-5-sonnet-20241022")
 GEMINI_2_0_FLASH = GoogleClient("gemini-2.0-flash")
 GEMINI_2_0_PRO = GoogleClient("gemini-2.0-pro-exp-02-05")
 LLAMA_405B = TogetherAIClient("meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo")
+
+ALL_MODELS = [
+    OPENAI_GPT_4O,
+    OPENAI_O1,
+    DEEPSEEK_R1,
+    DEEPSEEK_V3,
+    CLAUDE_35,
+    GEMINI_2_0_FLASH,
+    GEMINI_2_0_PRO,
+    LLAMA_405B,
+]
 
 
 def test_clients() -> None:
     """
     Test out the integrations
     """
-    OPENAI_GPT_4O.test()
-    OPENAI_O1.test()
-    DEEPSEEK_V3.test()
-    DEEPSEEK_R1.test()
-    CLAUDE_35.test()
-    GEMINI_2_0_FLASH.test()
-    GEMINI_2_0_PRO.test()
-    LLAMA_405B.test()
-
-
-"""
-Rewrite the above clients to take a model as a class variable, and for the message only as an optional override
-"""
+    for a in ALL_MODELS:
+        a.test()
 
 
 if __name__ == "__main__":

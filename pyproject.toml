@@ -12,7 +12,7 @@ dependencies = [
 ]
 
 [tool.ruff]
-line-length = 100
+line-length = 120
 target-version = "py312"
 # Allow autofix for all enabled rules (when `--fix`) is provided.
 fixable = ["A", "B", "C", "D", "E", "F", "COM"]
@@ -22,23 +22,14 @@ unfixable = []
 select = ["ALL"]
 ignore = [
     # not interested in docstring linting
-    "D100",
-    "D105",
-    "D107",
-    "D200",
-    "D203",
-    "D212",
-    "D400",
-    "D406",
-    "D407",
-    "D415",
-    "D403",
+    "D",
     "ERA001", # flag commented-out code
     "TD002", # missing issue link after TODO
     "TD003", # TODO should start with an uppercase word
     "T201", # flag print statements
     "PTH", # encourage use of Pathlib over os.path
     "UP007", # bad new union type annotation
+    "PLR0913", # too many arguments to function def
 ]
 
 [tool.mypy]
