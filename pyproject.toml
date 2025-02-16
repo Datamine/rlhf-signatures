@@ -15,7 +15,7 @@ dependencies = [
 line-length = 100
 target-version = "py312"
 # Allow autofix for all enabled rules (when `--fix`) is provided.
-fixable = ["A", "B", "C", "D", "E", "F"]
+fixable = ["A", "B", "C", "D", "E", "F", "COM"]
 unfixable = []
 
 [tool.ruff.lint]
@@ -38,6 +38,7 @@ ignore = [
     "TD003", # TODO should start with an uppercase word
     "T201", # flag print statements
     "PTH", # encourage use of Pathlib over os.path
+    "UP007", # bad new union type annotation
 ]
 
 [tool.mypy]
