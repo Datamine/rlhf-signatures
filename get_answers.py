@@ -1,9 +1,6 @@
-import _csv
 import asyncio
 import csv
-import os
 import re
-from typing import TextIO
 
 from llm_interface import ALL_MODELS, GeneralClient
 
@@ -19,46 +16,40 @@ def safe_filename(filename: str) -> str:
 async def process_question(
     model_instance: GeneralClient,
     question: str,
-    writer: _csv.Writer,
-    lock: asyncio.Lock,
-    processed_set: set[str],
-    csv_file: TextIO,
-) -> None:
+    csv_filename: str,
+) -> bool:
     """
-    Process an individual question
+    Process an individual question:
+    - Open the CSV file and check if the question (in column 0) is already present.
+    - If not, call the model and append the [question, answer] row.
+    - return true/false depending on whether api was called
     """
-    # Check (with the lock) if the question is already processed.
-    async with lock:
-        if question in processed_set:
-            print(f"[{model_instance.model}] Skipping already processed question: {question}")
-            return
+    # Check on disk if the question is already processed.
+    try:
+        with open(csv_filename, newline="") as f:
+            reader = csv.reader(f)
+            for row in reader:
+                # question is stored in row[0]
+                if row and row[0] == question:
+                    print(f"[{model_instance.model}] Skipping: {question}")
+                    return False
+    except FileNotFoundError:
+        # The file does not exist yet, so no processed questions.
+        pass
 
     try:
-        # If call_model is blocking, run it in a thread.
+        # Run the (potentially blocking) model call in a separate thread.
         answer = await asyncio.to_thread(model_instance.call_model, question)
 
-        # Write the answer immediately (with the lock).
-        async with lock:
-            # Double-check in case it got processed while waiting.
-            if question in processed_set:
-                print(
-                    f"[{model_instance.model}] Question already processed after API call: {question}",
-                )
-                return
+        # Append the answer to the CSV file.
+        with open(csv_filename, "a", newline="") as f:
+            writer = csv.writer(f)
             writer.writerow([question, answer])
-            csv_file.flush()  # write to disk immediately
-            processed_set.add(question)
-            print(f"[{model_instance.model}] Written: {question} -> {answer}")
+        print(f"[{model_instance.model}] Written: {question} -> {answer}")
 
-    except Exception as e:  # noqa:BLE001
-        # If an exception occurs, check if the question was already written.
-        async with lock:
-            if question in processed_set:
-                print(
-                    f"[{model_instance.model}] Exception occurred but question already processed: {question}",
-                )
-            else:
-                print(f"[{model_instance.model}] Exception processing question '{question}': {e}")
+    except Exception as e:  # noqa: BLE001
+        print(f"[{model_instance.model}] Exception: '{question}': {e}")
+    return True
 
 
 async def process_model_instance(
@@ -68,41 +59,23 @@ async def process_model_instance(
     """
     For a given model instance, process all questions and write answers to answers_[model].csv.
     """
-    filename = safe_filename(f"answers_{model_instance.model}.csv")
-    processed_set = set()
+    csv_filename = safe_filename(f"answers_{model_instance.model}.csv")
 
-    # If the file already exists, load questions that have been answered.
-    if os.path.exists(filename):
-        with open(filename, newline="") as f:
-            reader = csv.reader(f)
-            for row in reader:
-                if row:
-                    # row[3] is the actual question itself
-                    processed_set.add(row[3])
-
-    # Open the output CSV in append mode.
-    csv_file = open(filename, "a", newline="")
-    writer = csv.writer(csv_file)
-
-    # Create a lock to control access to the file and the processed_set.
-    lock = asyncio.Lock()
-
-    # Create a task for each question (if not already processed).
-    tasks = []
-    for question_row in question_rows:
-        question = question_row[3]
-        # question row is a csv row, the question itself is question[3]
-        async with lock:
-            if question in processed_set:
-                continue
-        task = asyncio.create_task(
-            process_question(model_instance, question, writer, lock, processed_set, csv_file),
-        )
-        tasks.append(task)
-
-    # Await completion of all tasks for this API instance.
-    await asyncio.gather(*tasks)
-    csv_file.close()
+    if model_instance.rate_limit_between_calls:
+        for question_row in question_rows:
+            # The question is assumed to be in the fourth column (index 3) of the questions CSV.
+            question = question_row[3]
+            api_called = await process_question(model_instance, question, csv_filename)
+            if api_called:
+                # avoid whatever rate limits apply
+                await asyncio.sleep(model_instance.rate_limit_between_calls)
+    else:
+        # Process questions concurrently.
+        tasks = []
+        for question_row in question_rows:
+            question = question_row[3]
+            tasks.append(asyncio.create_task(process_question(model_instance, question, csv_filename)))
+        await asyncio.gather(*tasks)
 
 
 def load_questions() -> list[list[str]]:
