@@ -1,42 +1,23 @@
 Wording Style,Food A,Food B,Question,Answer
-1,Tacos,Ramen,What is more delicious? Tacos or Ramen? Answer with only and exactly one of these two options.,"Tacos
-"
-2,Tacos,Ramen,Which is the more delicious? Tacos or Ramen? Answer with only and exactly one of these two options.,"Tacos
-"
-3,Tacos,Ramen,What's more delicious: Tacos or Ramen? Answer with only and exactly one of these two options.,"Tacos
-"
-4,Tacos,Ramen,Which is more delicious? Tacos or Ramen? ... Answer with only and exactly one of these two options.,"Tacos
-"
-5,Tacos,Ramen,What's more delicious -- Tacos or Ramen? Answer with only and exactly one of these two options.,"Tacos
-"
-1,Tacos,Hamburger,What is more delicious? Tacos or Hamburger? Answer with only and exactly one of these two options.,"Tacos
-"
-2,Tacos,Hamburger,Which is the more delicious? Tacos or Hamburger? Answer with only and exactly one of these two options.,"Tacos
-"
-3,Tacos,Hamburger,What's more delicious: Tacos or Hamburger? Answer with only and exactly one of these two options.,"Tacos
-"
-4,Tacos,Hamburger,Which is more delicious? Tacos or Hamburger? ... Answer with only and exactly one of these two options.,"Tacos
-"
-5,Tacos,Hamburger,What's more delicious -- Tacos or Hamburger? Answer with only and exactly one of these two options.,"Tacos
-"
-1,Tacos,Currywurst,What is more delicious? Tacos or Currywurst? Answer with only and exactly one of these two options.,"Tacos
-"
-2,Tacos,Currywurst,Which is the more delicious? Tacos or Currywurst? Answer with only and exactly one of these two options.,"Tacos
-"
-3,Tacos,Currywurst,What's more delicious: Tacos or Currywurst? Answer with only and exactly one of these two options.,"Tacos
-"
-4,Tacos,Currywurst,Which is more delicious? Tacos or Currywurst? ... Answer with only and exactly one of these two options.,"Tacos
-"
-5,Tacos,Currywurst,What's more delicious -- Tacos or Currywurst? Answer with only and exactly one of these two options.,"Tacos
-"
-1,Tacos,Souvlaki,What is more delicious? Tacos or Souvlaki? Answer with only and exactly one of these two options.,"Tacos
-"
-2,Tacos,Souvlaki,Which is the more delicious? Tacos or Souvlaki? Answer with only and exactly one of these two options.,"Tacos
-"
-3,Tacos,Souvlaki,What's more delicious: Tacos or Souvlaki? Answer with only and exactly one of these two options.,"Tacos
-"
-4,Tacos,Souvlaki,Which is more delicious? Tacos or Souvlaki? ... Answer with only and exactly one of these two options.,"Tacos
-"
+1,Tacos,Ramen,What is more delicious? Tacos or Ramen? Answer with only and exactly one of these two options.,"Tacos"
+2,Tacos,Ramen,Which is the more delicious? Tacos or Ramen? Answer with only and exactly one of these two options.,"Tacos"
+3,Tacos,Ramen,What's more delicious: Tacos or Ramen? Answer with only and exactly one of these two options.,"Tacos"
+4,Tacos,Ramen,Which is more delicious? Tacos or Ramen? ... Answer with only and exactly one of these two options.,"Tacos"
+5,Tacos,Ramen,What's more delicious -- Tacos or Ramen? Answer with only and exactly one of these two options.,"Tacos"
+1,Tacos,Hamburger,What is more delicious? Tacos or Hamburger? Answer with only and exactly one of these two options.,"Tacos"
+2,Tacos,Hamburger,Which is the more delicious? Tacos or Hamburger? Answer with only and exactly one of these two options.,"Tacos"
+3,Tacos,Hamburger,What's more delicious: Tacos or Hamburger? Answer with only and exactly one of these two options.,"Tacos"
+4,Tacos,Hamburger,Which is more delicious? Tacos or Hamburger? ... Answer with only and exactly one of these two options.,"Tacos"
+5,Tacos,Hamburger,What's more delicious -- Tacos or Hamburger? Answer with only and exactly one of these two options.,"Tacos"
+1,Tacos,Currywurst,What is more delicious? Tacos or Currywurst? Answer with only and exactly one of these two options.,"Tacos"
+2,Tacos,Currywurst,Which is the more delicious? Tacos or Currywurst? Answer with only and exactly one of these two options.,"Tacos"
+3,Tacos,Currywurst,What's more delicious: Tacos or Currywurst? Answer with only and exactly one of these two options.,"Tacos"
+4,Tacos,Currywurst,Which is more delicious? Tacos or Currywurst? ... Answer with only and exactly one of these two options.,"Tacos"
+5,Tacos,Currywurst,What's more delicious -- Tacos or Currywurst? Answer with only and exactly one of these two options.,"Tacos"
+1,Tacos,Souvlaki,What is more delicious? Tacos or Souvlaki? Answer with only and exactly one of these two options.,"Tacos"
+2,Tacos,Souvlaki,Which is the more delicious? Tacos or Souvlaki? Answer with only and exactly one of these two options.,"Tacos"
+3,Tacos,Souvlaki,What's more delicious: Tacos or Souvlaki? Answer with only and exactly one of these two options.,"Tacos"
+4,Tacos,Souvlaki,Which is more delicious? Tacos or Souvlaki? ... Answer with only and exactly one of these two options.,"Tacos"
 5,Tacos,Souvlaki,What's more delicious -- Tacos or Souvlaki? Answer with only and exactly one of these two options.,
 1,Tacos,Falafel,What is more delicious? Tacos or Falafel? Answer with only and exactly one of these two options.,
 2,Tacos,Falafel,Which is the more delicious? Tacos or Falafel? Answer with only and exactly one of these two options.,
@@ -48,18 +29,12 @@ Wording Style,Food A,Food B,Question,Answer
 3,Tacos,Banh mì,What's more delicious: Tacos or Banh mì? Answer with only and exactly one of these two options.,
 4,Tacos,Banh mì,Which is more delicious? Tacos or Banh mì? ... Answer with only and exactly one of these two options.,
 5,Tacos,Banh mì,What's more delicious -- Tacos or Banh mì? Answer with only and exactly one of these two options.,
-1,Tacos,Samosa,What is more delicious? Tacos or Samosa? Answer with only and exactly one of these two options.,"Tacos
-"
-2,Tacos,Samosa,Which is the more delicious? Tacos or Samosa? Answer with only and exactly one of these two options.,"Tacos
-"
-3,Tacos,Samosa,What's more delicious: Tacos or Samosa? Answer with only and exactly one of these two options.,"Tacos
-"
-4,Tacos,Samosa,Which is more delicious? Tacos or Samosa? ... Answer with only and exactly one of these two options.,"Tacos
-"
-5,Tacos,Samosa,What's more delicious -- Tacos or Samosa? Answer with only and exactly one of these two options.,"Tacos
-"
-1,Tacos,Jollof Rice,What is more delicious? Tacos or Jollof Rice? Answer with only and exactly one of these two options.,"Tacos
-"
+1,Tacos,Samosa,What is more delicious? Tacos or Samosa? Answer with only and exactly one of these two options.,"Tacos"
+2,Tacos,Samosa,Which is the more delicious? Tacos or Samosa? Answer with only and exactly one of these two options.,"Tacos"
+3,Tacos,Samosa,What's more delicious: Tacos or Samosa? Answer with only and exactly one of these two options.,"Tacos"
+4,Tacos,Samosa,Which is more delicious? Tacos or Samosa? ... Answer with only and exactly one of these two options.,"Tacos"
+5,Tacos,Samosa,What's more delicious -- Tacos or Samosa? Answer with only and exactly one of these two options.,"Tacos"
+1,Tacos,Jollof Rice,What is more delicious? Tacos or Jollof Rice? Answer with only and exactly one of these two options.,"Tacos"
 2,Tacos,Jollof Rice,Which is the more delicious? Tacos or Jollof Rice? Answer with only and exactly one of these two options.,
 3,Tacos,Jollof Rice,What's more delicious: Tacos or Jollof Rice? Answer with only and exactly one of these two options.,
 4,Tacos,Jollof Rice,Which is more delicious? Tacos or Jollof Rice? ... Answer with only and exactly one of these two options.,
@@ -80,18 +55,12 @@ Wording Style,Food A,Food B,Question,Answer
 4,Ramen,Hamburger,Which is more delicious? Ramen or Hamburger? ... Answer with only and exactly one of these two options.,
 5,Ramen,Hamburger,What's more delicious -- Ramen or Hamburger? Answer with only and exactly one of these two options.,
 1,Ramen,Currywurst,What is more delicious? Ramen or Currywurst? Answer with only and exactly one of these two options.,
-2,Ramen,Currywurst,Which is the more delicious? Ramen or Currywurst? Answer with only and exactly one of these two options.,"Ramen
-"
-3,Ramen,Currywurst,What's more delicious: Ramen or Currywurst? Answer with only and exactly one of these two options.,"Ramen
-"
-4,Ramen,Currywurst,Which is more delicious? Ramen or Currywurst? ... Answer with only and exactly one of these two options.,"Ramen
-"
-5,Ramen,Currywurst,What's more delicious -- Ramen or Currywurst? Answer with only and exactly one of these two options.,"Ramen
-"
-1,Ramen,Souvlaki,What is more delicious? Ramen or Souvlaki? Answer with only and exactly one of these two options.,"Ramen
-"
-2,Ramen,Souvlaki,Which is the more delicious? Ramen or Souvlaki? Answer with only and exactly one of these two options.,"Ramen
-"
+2,Ramen,Currywurst,Which is the more delicious? Ramen or Currywurst? Answer with only and exactly one of these two options.,"Ramen"
+3,Ramen,Currywurst,What's more delicious: Ramen or Currywurst? Answer with only and exactly one of these two options.,"Ramen"
+4,Ramen,Currywurst,Which is more delicious? Ramen or Currywurst? ... Answer with only and exactly one of these two options.,"Ramen"
+5,Ramen,Currywurst,What's more delicious -- Ramen or Currywurst? Answer with only and exactly one of these two options.,"Ramen"
+1,Ramen,Souvlaki,What is more delicious? Ramen or Souvlaki? Answer with only and exactly one of these two options.,"Ramen"
+2,Ramen,Souvlaki,Which is the more delicious? Ramen or Souvlaki? Answer with only and exactly one of these two options.,"Ramen"
 3,Ramen,Souvlaki,What's more delicious: Ramen or Souvlaki? Answer with only and exactly one of these two options.,
 4,Ramen,Souvlaki,Which is more delicious? Ramen or Souvlaki? ... Answer with only and exactly one of these two options.,
 5,Ramen,Souvlaki,What's more delicious -- Ramen or Souvlaki? Answer with only and exactly one of these two options.,
@@ -113,18 +82,12 @@ Wording Style,Food A,Food B,Question,Answer
 1,Ramen,Jollof Rice,What is more delicious? Ramen or Jollof Rice? Answer with only and exactly one of these two options.,
 2,Ramen,Jollof Rice,Which is the more delicious? Ramen or Jollof Rice? Answer with only and exactly one of these two options.,
 3,Ramen,Jollof Rice,What's more delicious: Ramen or Jollof Rice? Answer with only and exactly one of these two options.,
-4,Ramen,Jollof Rice,Which is more delicious? Ramen or Jollof Rice? ... Answer with only and exactly one of these two options.,"Ramen
-"
-5,Ramen,Jollof Rice,What's more delicious -- Ramen or Jollof Rice? Answer with only and exactly one of these two options.,"Jollof Rice
-"
-1,Ramen,Lechon,What is more delicious? Ramen or Lechon? Answer with only and exactly one of these two options.,"Ramen
-"
-2,Ramen,Lechon,Which is the more delicious? Ramen or Lechon? Answer with only and exactly one of these two options.,"Lechon
-"
-3,Ramen,Lechon,What's more delicious: Ramen or Lechon? Answer with only and exactly one of these two options.,"Lechon
-"
-4,Ramen,Lechon,Which is more delicious? Ramen or Lechon? ... Answer with only and exactly one of these two options.,"Lechon
-"
+4,Ramen,Jollof Rice,Which is more delicious? Ramen or Jollof Rice? ... Answer with only and exactly one of these two options.,"Ramen"
+5,Ramen,Jollof Rice,What's more delicious -- Ramen or Jollof Rice? Answer with only and exactly one of these two options.,"Jollof Rice"
+1,Ramen,Lechon,What is more delicious? Ramen or Lechon? Answer with only and exactly one of these two options.,"Ramen"
+2,Ramen,Lechon,Which is the more delicious? Ramen or Lechon? Answer with only and exactly one of these two options.,"Lechon"
+3,Ramen,Lechon,What's more delicious: Ramen or Lechon? Answer with only and exactly one of these two options.,"Lechon"
+4,Ramen,Lechon,Which is more delicious? Ramen or Lechon? ... Answer with only and exactly one of these two options.,"Lechon"
 5,Ramen,Lechon,What's more delicious -- Ramen or Lechon? Answer with only and exactly one of these two options.,
 1,Hamburger,Tacos,What is more delicious? Hamburger or Tacos? Answer with only and exactly one of these two options.,
 2,Hamburger,Tacos,Which is the more delicious? Hamburger or Tacos? Answer with only and exactly one of these two options.,
@@ -146,18 +109,12 @@ Wording Style,Food A,Food B,Question,Answer
 3,Hamburger,Souvlaki,What's more delicious: Hamburger or Souvlaki? Answer with only and exactly one of these two options.,
 4,Hamburger,Souvlaki,Which is more delicious? Hamburger or Souvlaki? ... Answer with only and exactly one of these two options.,
 5,Hamburger,Souvlaki,What's more delicious -- Hamburger or Souvlaki? Answer with only and exactly one of these two options.,
-1,Hamburger,Falafel,What is more delicious? Hamburger or Falafel? Answer with only and exactly one of these two options.,"Hamburger
-"
-2,Hamburger,Falafel,Which is the more delicious? Hamburger or Falafel? Answer with only and exactly one of these two options.,"Hamburger
-"
-3,Hamburger,Falafel,What's more delicious: Hamburger or Falafel? Answer with only and exactly one of these two options.,"Hamburger
-"
-4,Hamburger,Falafel,Which is more delicious? Hamburger or Falafel? ... Answer with only and exactly one of these two options.,"Hamburger
-"
-5,Hamburger,Falafel,What's more delicious -- Hamburger or Falafel? Answer with only and exactly one of these two options.,"Hamburger
-"
-1,Hamburger,Banh mì,What is more delicious? Hamburger or Banh mì? Answer with only and exactly one of these two options.,"Banh mì
-"
+1,Hamburger,Falafel,What is more delicious? Hamburger or Falafel? Answer with only and exactly one of these two options.,"Hamburger"
+2,Hamburger,Falafel,Which is the more delicious? Hamburger or Falafel? Answer with only and exactly one of these two options.,"Hamburger"
+3,Hamburger,Falafel,What's more delicious: Hamburger or Falafel? Answer with only and exactly one of these two options.,"Hamburger"
+4,Hamburger,Falafel,Which is more delicious? Hamburger or Falafel? ... Answer with only and exactly one of these two options.,"Hamburger"
+5,Hamburger,Falafel,What's more delicious -- Hamburger or Falafel? Answer with only and exactly one of these two options.,"Hamburger"
+1,Hamburger,Banh mì,What is more delicious? Hamburger or Banh mì? Answer with only and exactly one of these two options.,"Banh mì"
 2,Hamburger,Banh mì,Which is the more delicious? Hamburger or Banh mì? Answer with only and exactly one of these two options.,
 3,Hamburger,Banh mì,What's more delicious: Hamburger or Banh mì? Answer with only and exactly one of these two options.,
 4,Hamburger,Banh mì,Which is more delicious? Hamburger or Banh mì? ... Answer with only and exactly one of these two options.,
@@ -179,18 +136,12 @@ Wording Style,Food A,Food B,Question,Answer
 5,Hamburger,Lechon,What's more delicious -- Hamburger or Lechon? Answer with only and exactly one of these two options.,
 1,Currywurst,Tacos,What is more delicious? Currywurst or Tacos? Answer with only and exactly one of these two options.,
 2,Currywurst,Tacos,Which is the more delicious? Currywurst or Tacos? Answer with only and exactly one of these two options.,
-3,Currywurst,Tacos,What's more delicious: Currywurst or Tacos? Answer with only and exactly one of these two options.,"Tacos
-"
-4,Currywurst,Tacos,Which is more delicious? Currywurst or Tacos? ... Answer with only and exactly one of these two options.,"Tacos
-"
-5,Currywurst,Tacos,What's more delicious -- Currywurst or Tacos? Answer with only and exactly one of these two options.,"Tacos
-"
-1,Currywurst,Ramen,What is more delicious? Currywurst or Ramen? Answer with only and exactly one of these two options.,"Ramen
-"
-2,Currywurst,Ramen,Which is the more delicious? Currywurst or Ramen? Answer with only and exactly one of these two options.,"Ramen
-"
-3,Currywurst,Ramen,What's more delicious: Currywurst or Ramen? Answer with only and exactly one of these two options.,"Ramen
-"
+3,Currywurst,Tacos,What's more delicious: Currywurst or Tacos? Answer with only and exactly one of these two options.,"Tacos"
+4,Currywurst,Tacos,Which is more delicious? Currywurst or Tacos? ... Answer with only and exactly one of these two options.,"Tacos"
+5,Currywurst,Tacos,What's more delicious -- Currywurst or Tacos? Answer with only and exactly one of these two options.,"Tacos"
+1,Currywurst,Ramen,What is more delicious? Currywurst or Ramen? Answer with only and exactly one of these two options.,"Ramen"
+2,Currywurst,Ramen,Which is the more delicious? Currywurst or Ramen? Answer with only and exactly one of these two options.,"Ramen"
+3,Currywurst,Ramen,What's more delicious: Currywurst or Ramen? Answer with only and exactly one of these two options.,"Ramen"
 4,Currywurst,Ramen,Which is more delicious? Currywurst or Ramen? ... Answer with only and exactly one of these two options.,
 5,Currywurst,Ramen,What's more delicious -- Currywurst or Ramen? Answer with only and exactly one of these two options.,
 1,Currywurst,Hamburger,What is more delicious? Currywurst or Hamburger? Answer with only and exactly one of these two options.,
@@ -212,18 +163,12 @@ Wording Style,Food A,Food B,Question,Answer
 2,Currywurst,Banh mì,Which is the more delicious? Currywurst or Banh mì? Answer with only and exactly one of these two options.,
 3,Currywurst,Banh mì,What's more delicious: Currywurst or Banh mì? Answer with only and exactly one of these two options.,
 4,Currywurst,Banh mì,Which is more delicious? Currywurst or Banh mì? ... Answer with only and exactly one of these two options.,
-5,Currywurst,Banh mì,What's more delicious -- Currywurst or Banh mì? Answer with only and exactly one of these two options.,"Banh mì
-"
-1,Currywurst,Samosa,What is more delicious? Currywurst or Samosa? Answer with only and exactly one of these two options.,"Samosa
-"
-2,Currywurst,Samosa,Which is the more delicious? Currywurst or Samosa? Answer with only and exactly one of these two options.,"Samosa
-"
-3,Currywurst,Samosa,What's more delicious: Currywurst or Samosa? Answer with only and exactly one of these two options.,"Samosa
-"
-4,Currywurst,Samosa,Which is more delicious? Currywurst or Samosa? ... Answer with only and exactly one of these two options.,"Samosa
-"
-5,Currywurst,Samosa,What's more delicious -- Currywurst or Samosa? Answer with only and exactly one of these two options.,"Samosa
-"
+5,Currywurst,Banh mì,What's more delicious -- Currywurst or Banh mì? Answer with only and exactly one of these two options.,"Banh mì"
+1,Currywurst,Samosa,What is more delicious? Currywurst or Samosa? Answer with only and exactly one of these two options.,"Samosa"
+2,Currywurst,Samosa,Which is the more delicious? Currywurst or Samosa? Answer with only and exactly one of these two options.,"Samosa"
+3,Currywurst,Samosa,What's more delicious: Currywurst or Samosa? Answer with only and exactly one of these two options.,"Samosa"
+4,Currywurst,Samosa,Which is more delicious? Currywurst or Samosa? ... Answer with only and exactly one of these two options.,"Samosa"
+5,Currywurst,Samosa,What's more delicious -- Currywurst or Samosa? Answer with only and exactly one of these two options.,"Samosa"
 1,Currywurst,Jollof Rice,What is more delicious? Currywurst or Jollof Rice? Answer with only and exactly one of these two options.,
 2,Currywurst,Jollof Rice,Which is the more delicious? Currywurst or Jollof Rice? Answer with only and exactly one of these two options.,
 3,Currywurst,Jollof Rice,What's more delicious: Currywurst or Jollof Rice? Answer with only and exactly one of these two options.,
@@ -245,18 +190,12 @@ Wording Style,Food A,Food B,Question,Answer
 4,Souvlaki,Ramen,Which is more delicious? Souvlaki or Ramen? ... Answer with only and exactly one of these two options.,
 5,Souvlaki,Ramen,What's more delicious -- Souvlaki or Ramen? Answer with only and exactly one of these two options.,
 1,Souvlaki,Hamburger,What is more delicious? Souvlaki or Hamburger? Answer with only and exactly one of these two options.,
-2,Souvlaki,Hamburger,Which is the more delicious? Souvlaki or Hamburger? Answer with only and exactly one of these two options.,"Souvlaki
-"
-3,Souvlaki,Hamburger,What's more delicious: Souvlaki or Hamburger? Answer with only and exactly one of these two options.,"Souvlaki
-"
-4,Souvlaki,Hamburger,Which is more delicious? Souvlaki or Hamburger? ... Answer with only and exactly one of these two options.,"Souvlaki
-"
-5,Souvlaki,Hamburger,What's more delicious -- Souvlaki or Hamburger? Answer with only and exactly one of these two options.,"Souvlaki
-"
-1,Souvlaki,Currywurst,What is more delicious? Souvlaki or Currywurst? Answer with only and exactly one of these two options.,"Souvlaki
-"
-2,Souvlaki,Currywurst,Which is the more delicious? Souvlaki or Currywurst? Answer with only and exactly one of these two options.,"Souvlaki
-"
+2,Souvlaki,Hamburger,Which is the more delicious? Souvlaki or Hamburger? Answer with only and exactly one of these two options.,"Souvlaki"
+3,Souvlaki,Hamburger,What's more delicious: Souvlaki or Hamburger? Answer with only and exactly one of these two options.,"Souvlaki"
+4,Souvlaki,Hamburger,Which is more delicious? Souvlaki or Hamburger? ... Answer with only and exactly one of these two options.,"Souvlaki"
+5,Souvlaki,Hamburger,What's more delicious -- Souvlaki or Hamburger? Answer with only and exactly one of these two options.,"Souvlaki"
+1,Souvlaki,Currywurst,What is more delicious? Souvlaki or Currywurst? Answer with only and exactly one of these two options.,"Souvlaki"
+2,Souvlaki,Currywurst,Which is the more delicious? Souvlaki or Currywurst? Answer with only and exactly one of these two options.,"Souvlaki"
 3,Souvlaki,Currywurst,What's more delicious: Souvlaki or Currywurst? Answer with only and exactly one of these two options.,
 4,Souvlaki,Currywurst,Which is more delicious? Souvlaki or Currywurst? ... Answer with only and exactly one of these two options.,
 5,Souvlaki,Currywurst,What's more delicious -- Souvlaki or Currywurst? Answer with only and exactly one of these two options.,
@@ -277,18 +216,12 @@ Wording Style,Food A,Food B,Question,Answer
 5,Souvlaki,Samosa,What's more delicious -- Souvlaki or Samosa? Answer with only and exactly one of these two options.,
 1,Souvlaki,Jollof Rice,What is more delicious? Souvlaki or Jollof Rice? Answer with only and exactly one of these two options.,
 2,Souvlaki,Jollof Rice,Which is the more delicious? Souvlaki or Jollof Rice? Answer with only and exactly one of these two options.,
-3,Souvlaki,Jollof Rice,What's more delicious: Souvlaki or Jollof Rice? Answer with only and exactly one of these two options.,"Souvlaki
-"
-4,Souvlaki,Jollof Rice,Which is more delicious? Souvlaki or Jollof Rice? ... Answer with only and exactly one of these two options.,"Souvlaki
-"
-5,Souvlaki,Jollof Rice,What's more delicious -- Souvlaki or Jollof Rice? Answer with only and exactly one of these two options.,"Souvlaki
-"
-1,Souvlaki,Lechon,What is more delicious? Souvlaki or Lechon? Answer with only and exactly one of these two options.,"Souvlaki
-"
-2,Souvlaki,Lechon,Which is the more delicious? Souvlaki or Lechon? Answer with only and exactly one of these two options.,"Lechon
-"
-3,Souvlaki,Lechon,What's more delicious: Souvlaki or Lechon? Answer with only and exactly one of these two options.,"Lechon
-"
+3,Souvlaki,Jollof Rice,What's more delicious: Souvlaki or Jollof Rice? Answer with only and exactly one of these two options.,"Souvlaki"
+4,Souvlaki,Jollof Rice,Which is more delicious? Souvlaki or Jollof Rice? ... Answer with only and exactly one of these two options.,"Souvlaki"
+5,Souvlaki,Jollof Rice,What's more delicious -- Souvlaki or Jollof Rice? Answer with only and exactly one of these two options.,"Souvlaki"
+1,Souvlaki,Lechon,What is more delicious? Souvlaki or Lechon? Answer with only and exactly one of these two options.,"Souvlaki"
+2,Souvlaki,Lechon,Which is the more delicious? Souvlaki or Lechon? Answer with only and exactly one of these two options.,"Lechon"
+3,Souvlaki,Lechon,What's more delicious: Souvlaki or Lechon? Answer with only and exactly one of these two options.,"Lechon"
 4,Souvlaki,Lechon,Which is more delicious? Souvlaki or Lechon? ... Answer with only and exactly one of these two options.,
 5,Souvlaki,Lechon,What's more delicious -- Souvlaki or Lechon? Answer with only and exactly one of these two options.,
 1,Falafel,Tacos,What is more delicious? Falafel or Tacos? Answer with only and exactly one of these two options.,
@@ -310,18 +243,12 @@ Wording Style,Food A,Food B,Question,Answer
 2,Falafel,Currywurst,Which is the more delicious? Falafel or Currywurst? Answer with only and exactly one of these two options.,
 3,Falafel,Currywurst,What's more delicious: Falafel or Currywurst? Answer with only and exactly one of these two options.,
 4,Falafel,Currywurst,Which is more delicious? Falafel or Currywurst? ... Answer with only and exactly one of these two options.,
-5,Falafel,Currywurst,What's more delicious -- Falafel or Currywurst? Answer with only and exactly one of these two options.,"Falafel
-"
-1,Falafel,Souvlaki,What is more delicious? Falafel or Souvlaki? Answer with only and exactly one of these two options.,"Souvlaki
-"
-2,Falafel,Souvlaki,Which is the more delicious? Falafel or Souvlaki? Answer with only and exactly one of these two options.,"Souvlaki
-"
-3,Falafel,Souvlaki,What's more delicious: Falafel or Souvlaki? Answer with only and exactly one of these two options.,"Souvlaki
-"
-4,Falafel,Souvlaki,Which is more delicious? Falafel or Souvlaki? ... Answer with only and exactly one of these two options.,"Souvlaki
-"
-5,Falafel,Souvlaki,What's more delicious -- Falafel or Souvlaki? Answer with only and exactly one of these two options.,"Souvlaki
-"
+5,Falafel,Currywurst,What's more delicious -- Falafel or Currywurst? Answer with only and exactly one of these two options.,"Falafel"
+1,Falafel,Souvlaki,What is more delicious? Falafel or Souvlaki? Answer with only and exactly one of these two options.,"Souvlaki"
+2,Falafel,Souvlaki,Which is the more delicious? Falafel or Souvlaki? Answer with only and exactly one of these two options.,"Souvlaki"
+3,Falafel,Souvlaki,What's more delicious: Falafel or Souvlaki? Answer with only and exactly one of these two options.,"Souvlaki"
+4,Falafel,Souvlaki,Which is more delicious? Falafel or Souvlaki? ... Answer with only and exactly one of these two options.,"Souvlaki"
+5,Falafel,Souvlaki,What's more delicious -- Falafel or Souvlaki? Answer with only and exactly one of these two options.,"Souvlaki"
 1,Falafel,Banh mì,What is more delicious? Falafel or Banh mì? Answer with only and exactly one of these two options.,
 2,Falafel,Banh mì,Which is the more delicious? Falafel or Banh mì? Answer with only and exactly one of these two options.,
 3,Falafel,Banh mì,What's more delicious: Falafel or Banh mì? Answer with only and exactly one of these two options.,
@@ -343,18 +270,12 @@ Wording Style,Food A,Food B,Question,Answer
 4,Falafel,Lechon,Which is more delicious? Falafel or Lechon? ... Answer with only and exactly one of these two options.,
 5,Falafel,Lechon,What's more delicious -- Falafel or Lechon? Answer with only and exactly one of these two options.,
 1,Banh mì,Tacos,What is more delicious? Banh mì or Tacos? Answer with only and exactly one of these two options.,
-2,Banh mì,Tacos,Which is the more delicious? Banh mì or Tacos? Answer with only and exactly one of these two options.,"Tacos
-"
-3,Banh mì,Tacos,What's more delicious: Banh mì or Tacos? Answer with only and exactly one of these two options.,"Banh mì
-"
-4,Banh mì,Tacos,Which is more delicious? Banh mì or Tacos? ... Answer with only and exactly one of these two options.,"Tacos
-"
-5,Banh mì,Tacos,What's more delicious -- Banh mì or Tacos? Answer with only and exactly one of these two options.,"Tacos
-"
-1,Banh mì,Ramen,What is more delicious? Banh mì or Ramen? Answer with only and exactly one of these two options.,"Ramen
-"
-2,Banh mì,Ramen,Which is the more delicious? Banh mì or Ramen? Answer with only and exactly one of these two options.,"Banh mì
-"
+2,Banh mì,Tacos,Which is the more delicious? Banh mì or Tacos? Answer with only and exactly one of these two options.,"Tacos"
+3,Banh mì,Tacos,What's more delicious: Banh mì or Tacos? Answer with only and exactly one of these two options.,"Banh mì"
+4,Banh mì,Tacos,Which is more delicious? Banh mì or Tacos? ... Answer with only and exactly one of these two options.,"Tacos"
+5,Banh mì,Tacos,What's more delicious -- Banh mì or Tacos? Answer with only and exactly one of these two options.,"Tacos"
+1,Banh mì,Ramen,What is more delicious? Banh mì or Ramen? Answer with only and exactly one of these two options.,"Ramen"
+2,Banh mì,Ramen,Which is the more delicious? Banh mì or Ramen? Answer with only and exactly one of these two options.,"Banh mì"
 3,Banh mì,Ramen,What's more delicious: Banh mì or Ramen? Answer with only and exactly one of these two options.,
 4,Banh mì,Ramen,Which is more delicious? Banh mì or Ramen? ... Answer with only and exactly one of these two options.,
 5,Banh mì,Ramen,What's more delicious -- Banh mì or Ramen? Answer with only and exactly one of these two options.,
@@ -376,18 +297,12 @@ Wording Style,Food A,Food B,Question,Answer
 1,Banh mì,Falafel,What is more delicious? Banh mì or Falafel? Answer with only and exactly one of these two options.,
 2,Banh mì,Falafel,Which is the more delicious? Banh mì or Falafel? Answer with only and exactly one of these two options.,
 3,Banh mì,Falafel,What's more delicious: Banh mì or Falafel? Answer with only and exactly one of these two options.,
-4,Banh mì,Falafel,Which is more delicious? Banh mì or Falafel? ... Answer with only and exactly one of these two options.,"Banh mì
-"
-5,Banh mì,Falafel,What's more delicious -- Banh mì or Falafel? Answer with only and exactly one of these two options.,"Banh mì
-"
-1,Banh mì,Samosa,What is more delicious? Banh mì or Samosa? Answer with only and exactly one of these two options.,"Banh mi
-"
-2,Banh mì,Samosa,Which is the more delicious? Banh mì or Samosa? Answer with only and exactly one of these two options.,"Banh mì
-"
-3,Banh mì,Samosa,What's more delicious: Banh mì or Samosa? Answer with only and exactly one of these two options.,"Banh mì
-"
-4,Banh mì,Samosa,Which is more delicious? Banh mì or Samosa? ... Answer with only and exactly one of these two options.,"Banh mì
-"
+4,Banh mì,Falafel,Which is more delicious? Banh mì or Falafel? ... Answer with only and exactly one of these two options.,"Banh mì"
+5,Banh mì,Falafel,What's more delicious -- Banh mì or Falafel? Answer with only and exactly one of these two options.,"Banh mì"
+1,Banh mì,Samosa,What is more delicious? Banh mì or Samosa? Answer with only and exactly one of these two options.,"Banh mi"
+2,Banh mì,Samosa,Which is the more delicious? Banh mì or Samosa? Answer with only and exactly one of these two options.,"Banh mì"
+3,Banh mì,Samosa,What's more delicious: Banh mì or Samosa? Answer with only and exactly one of these two options.,"Banh mì"
+4,Banh mì,Samosa,Which is more delicious? Banh mì or Samosa? ... Answer with only and exactly one of these two options.,"Banh mì"
 5,Banh mì,Samosa,What's more delicious -- Banh mì or Samosa? Answer with only and exactly one of these two options.,
 1,Banh mì,Jollof Rice,What is more delicious? Banh mì or Jollof Rice? Answer with only and exactly one of these two options.,
 2,Banh mì,Jollof Rice,Which is the more delicious? Banh mì or Jollof Rice? Answer with only and exactly one of these two options.,
@@ -408,18 +323,12 @@ Wording Style,Food A,Food B,Question,Answer
 2,Samosa,Ramen,Which is the more delicious? Samosa or Ramen? Answer with only and exactly one of these two options.,
 3,Samosa,Ramen,What's more delicious: Samosa or Ramen? Answer with only and exactly one of these two options.,
 4,Samosa,Ramen,Which is more delicious? Samosa or Ramen? ... Answer with only and exactly one of these two options.,
-5,Samosa,Ramen,What's more delicious -- Samosa or Ramen? Answer with only and exactly one of these two options.,"Ramen
-"
-1,Samosa,Hamburger,What is more delicious? Samosa or Hamburger? Answer with only and exactly one of these two options.,"Samosa
-"
-2,Samosa,Hamburger,Which is the more delicious? Samosa or Hamburger? Answer with only and exactly one of these two options.,"Samosa
-"
-3,Samosa,Hamburger,What's more delicious: Samosa or Hamburger? Answer with only and exactly one of these two options.,"Samosa
-"
-4,Samosa,Hamburger,Which is more delicious? Samosa or Hamburger? ... Answer with only and exactly one of these two options.,"Samosa
-"
-5,Samosa,Hamburger,What's more delicious -- Samosa or Hamburger? Answer with only and exactly one of these two options.,"Samosa
-"
+5,Samosa,Ramen,What's more delicious -- Samosa or Ramen? Answer with only and exactly one of these two options.,"Ramen"
+1,Samosa,Hamburger,What is more delicious? Samosa or Hamburger? Answer with only and exactly one of these two options.,"Samosa"
+2,Samosa,Hamburger,Which is the more delicious? Samosa or Hamburger? Answer with only and exactly one of these two options.,"Samosa"
+3,Samosa,Hamburger,What's more delicious: Samosa or Hamburger? Answer with only and exactly one of these two options.,"Samosa"
+4,Samosa,Hamburger,Which is more delicious? Samosa or Hamburger? ... Answer with only and exactly one of these two options.,"Samosa"
+5,Samosa,Hamburger,What's more delicious -- Samosa or Hamburger? Answer with only and exactly one of these two options.,"Samosa"
 1,Samosa,Currywurst,What is more delicious? Samosa or Currywurst? Answer with only and exactly one of these two options.,
 2,Samosa,Currywurst,Which is the more delicious? Samosa or Currywurst? Answer with only and exactly one of these two options.,
 3,Samosa,Currywurst,What's more delicious: Samosa or Currywurst? Answer with only and exactly one of these two options.,
