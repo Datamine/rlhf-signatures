@@ -1,107 +1,95 @@
 import sys
 
 import pandas as pd
-from statsmodels.stats.contingency_tables import mcnemar
+from scipy.stats import ttest_rel
 
 
 def compute_paired_order_bias(filename: str) -> None:
     """
-    Run McNemar's test on ordered question pairs (Food A, Food B) vs. (Food B, Food A)
-    p value < 0.05 would suggest that ordering influences the choice
+    Performs a paired t-test to evaluate whether the mean difference in proportions
+    (between two orderings) is statistically different from zero. A mean difference
+    of zero would indicate that the ordering has no effect.
+
+    Returns:
+        t_statistic (float): The t-statistic, representing how many standard errors
+                            the observed mean difference is away from zero.
+        p_value (float): The p-value for the test. A p-value less than 0.05 suggests
+                        a statistically significant order effect.
+
+    Example:
+        A t-statistic of -3 and a p-value of 0.04 indicates that the mean difference is
+        about three standard errors below zero, providing statistically significant
+        evidence (p < 0.05) of an order effect.
     """
-    # Load the CSV file
+
     try:
         df = pd.read_csv(filename)
     except Exception as e:  # noqa: BLE001
         print("Error reading file:", e)
         return
 
-    # Check that required columns exist
+    # Ensure the required columns exist
     required_columns = {"Food A", "Food B", "Answer"}
     if not required_columns.issubset(df.columns):
-        print("Error: The CSV file must contain the columns:", required_columns)
+        print(f"Error: The CSV file must contain columns: {required_columns}")
         return
 
     # Create a canonical identifier for each food pair (order-independent)
-    def canonical_pair(row: dict[str, str]) -> tuple[str, ...]:
-        # Convert to strings to ensure consistent comparison
-        pair = sorted([str(row["Food A"]), str(row["Food B"])])
-        return tuple(pair)  # tuple is hashable
-
-    df["pair_id"] = df.apply(canonical_pair, axis=1)
+    # Here, we simply sort the names to create a tuple key.
+    df["pair_id"] = df.apply(lambda row: tuple(sorted([str(row["Food A"]), str(row["Food B"])])), axis=1)
 
     # Assign an order indicator:
-    # order 0: Food A equals the first element in the canonical (sorted) pair.
+    # order 0: Food A equals the first element in the sorted (canonical) pair.
     # order 1: Otherwise.
-    def assign_order(row: dict[str, str]) -> int | None:
-        canon = list(row["pair_id"])
-        if str(row["Food A"]) == canon[0]:
-            return 0
-        if str(row["Food A"]) == canon[1]:
-            return 1
+    df["order"] = df.apply(
+        lambda row: 0 if str(row["Food A"]) == sorted([str(row["Food A"]), str(row["Food B"])])[0] else 1,
+        axis=1,
+    )
 
-        return None
-
-    df["order"] = df.apply(assign_order, axis=1)
-
-    # Create a binary indicator: True if Answer equals Food A (i.e. first column)
+    # Create a binary indicator: True if Answer equals Food A (i.e., the first column)
     df["first_selected"] = df["Answer"] == df["Food A"]
 
-    # Group by the canonical food pair and only consider groups with exactly 2 responses.
-    pairs = df.groupby("pair_id")
+    # Group the data by the canonical food pair.
+    grouped = df.groupby("pair_id")
 
-    # Initialize counts for the contingency table:
-    # a: both orders selected the first column.
-    # b: canonical (order 0) selected first; reversed (order 1) did not.
-    # c: canonical did not select first; reversed did.
-    # d: neither selected first.
-    a = b = c = d = 0
-    pair_count = 0
-
-    for pair, group in pairs:
-        if len(group) != 2:  # noqa: PLR2004
-            print(f"Skipping pair {pair} because it does not have 2 entries (has {len(group)}).")
+    # For each pair, compute the proportion of responses in which the first column was selected,
+    # separately for order 0 and order 1.
+    results = []
+    for pair, group in grouped:
+        orders = group["order"].unique()
+        if 0 not in orders or 1 not in orders:
+            print(f"Skipping pair {pair} because it does not have both order 0 and order 1 responses.")
             continue
 
-        # Ensure one row is order 0 and one is order 1.
-        row_order0 = group[group["order"] == 0]
-        row_order1 = group[group["order"] == 1]
-        if row_order0.empty or row_order1.empty:
-            print(f"Skipping pair {pair} because it doesn't have both order 0 and order 1.")
-            continue
+        group_order0 = group[group["order"] == 0]
+        group_order1 = group[group["order"] == 1]
+        p0 = group_order0["first_selected"].mean()  # Proportion for order 0
+        p1 = group_order1["first_selected"].mean()  # Proportion for order 1
 
-        # Get the binary outcome for each ordering
-        val0 = row_order0.iloc[0]["first_selected"]
-        val1 = row_order1.iloc[0]["first_selected"]
+        results.append(
+            {
+                "pair_id": pair,
+                "p0": p0,
+                "p1": p1,
+                "n0": len(group_order0),
+                "n1": len(group_order1),
+            },
+        )
 
-        if val0 and val1:
-            a += 1
-        elif val0 and not val1:
-            b += 1
-        elif not val0 and val1:
-            c += 1
-        elif not val0 and not val1:
-            d += 1
-        pair_count += 1
+    if not results:
+        print("No pairs with responses in both orders found. Exiting.")
+        return
 
-    print("Total paired food combinations analyzed:", pair_count)
-    print("Contingency table counts (across pairs):")
-    print("  Both orders: first column chosen (a):", a)
-    print("  Canonical only (b):", b)
-    print("  Reversed only (c):", c)
-    print("  Neither (d):", d)
+    res_df = pd.DataFrame(results)
+    print("Summary of paired proportions by food pair (order 0 vs. order 1):")
+    print(res_df[["pair_id", "p0", "p1", "n0", "n1"]])
 
-    # McNemar's test focuses on the discordant pairs (b and c)
-    if (b + c) == 0:
-        print("\nNo discordant pairs found. McNemar's test is not applicable.")
-        p_value = 1.0
-    else:
-        # Use the exact binomial test (appropriate for small sample sizes)
-        result = mcnemar([[a, b], [c, d]], exact=True)
-        p_value = result.pvalue
-        print("\nMcNemar's test results:")
-        print("  Test statistic:", result.statistic)
-        print("  p-value:", p_value)
+    # Perform a paired t-test on the proportions across food pairs.
+    t_stat, p_val = ttest_rel(res_df["p0"], res_df["p1"])
+
+    print("\nPaired t-test on the proportions (order 0 minus order 1):")
+    print("  t-statistic:", t_stat)
+    print(f"  p-value:    {p_val:.3f}")
 
 
 if __name__ == "__main__":
