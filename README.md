@@ -66,16 +66,16 @@ I couldn't find a hosted version of [Bloom-176B](https://huggingface.co/bigscien
 
 ### FAQ
 
-Q: How do I contact you with my question?
+**Q: How do I contact you with my question?**
 
 A: Write to contact@johnloeber.com
 
-Q: How much did it cost to run these experiments?
+**Q: How much did it cost to run these experiments?**
 
 A: Maybe $20 in total. My calls to Llama-405B cost me only $0.10 total via TogetherAI. DeepSeek cost me ~50 cents, even with their reasoning model.
 OpenAI managed to charge me $15 for 200,000 output tokens, which had me mystified until I remembered that they don't just charge for output, but
 for the Chain-of-Thought tokens, since O1 is a reasoning model.
 
-Q: How can I contribute?
+**Q: How can I contribute?**
 
 A: Feel free to file issues, PRs, etc. I have GitHub notifications turned off, so email me if there's something I should look at.
