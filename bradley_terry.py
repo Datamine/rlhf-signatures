@@ -1,3 +1,5 @@
+import glob
+import os
 import sys
 
 import numpy as np
@@ -70,9 +72,7 @@ def compute_hessian(beta: NDArray[np.float64], contests: NDArray[np.float64]) ->
     return hessian
 
 
-def main() -> None:
-    filename = sys.argv[1]
-
+def compute_bt_for_file(filename: str) -> list[dict]:  # type: ignore[type-arg]
     # Read the CSV file.
     df = pd.read_csv(filename)
     required_columns = ["Food A", "Food B", "Answer"]
@@ -128,7 +128,7 @@ def main() -> None:
         # The observed Fisher information is -H; its inverse approximates the covariance.
         cov_free = inv(-hessian_free)
     except np.linalg.LinAlgError:
-        print("Error: Hessian is singular; cannot compute confidence intervals.")
+        print(f"Error for {filename}: Hessian is singular; cannot compute confidence intervals.")
         cov_free = np.full(hessian_free.shape, np.nan)
 
     # Build the standard errors vector.
@@ -160,16 +160,53 @@ def main() -> None:
         )
 
     # Sort by estimated ability (highest first)
-    results_sorted = sorted(results, key=lambda x: x["Ability (pi)"], reverse=True)
-
-    print("\nBradley-Terry Rankings:")
-    for res in results_sorted:
-        print(
-            f"{res['Option']}: Ability = {res['Ability (pi)']:.3f}, "
-            f"95% CI = ({res['Ability 95% CI'][0]:.3f}, {res['Ability 95% CI'][1]:.3f}), "
-            f"Beta = {res['Beta']:.3f} (SE = {res['SE (Beta)']:.3f})",
-        )
+    return sorted(results, key=lambda x: x["Ability (pi)"], reverse=True)
 
 
 if __name__ == "__main__":
-    main()
+    user_arg = sys.argv[1]
+    if user_arg.endswith(".csv"):
+        filename = sys.argv[1]
+        results = compute_bt_for_file(filename)
+        print("\nBradley-Terry Rankings:")
+        for res in results:
+            print(
+                f"{res['Option']}: Ability = {res['Ability (pi)']:.3f}, "
+                f"95% CI = ({res['Ability 95% CI'][0]:.3f}, {res['Ability 95% CI'][1]:.3f}), "
+                f"Beta = {res['Beta']:.3f} (SE = {res['SE (Beta)']:.3f})",
+            )
+    else:
+        # Otherwise, assume the argument is a directory.
+        csv_files = glob.glob(os.path.join(user_arg, "*.csv"))
+        if not csv_files:
+            print("No CSV files found in the specified directory.")
+            sys.exit(1)
+
+        # Dictionary to hold results: { model_name: { Option -> Ability } }
+        model_results = {}
+        for file_path in csv_files:
+            # unclean code, but skip the 2.0-pro-exp file because it's bad data (due to ratelimit)z
+            if "2.0-pro-exp" in file_path:
+                continue
+
+            # Model name is taken from the filename (without extension)
+            model_name = os.path.splitext(os.path.basename(file_path))[0].replace("merged_answers_", "")
+            try:
+                bt_results = compute_bt_for_file(file_path)
+                # Extract a mapping from Option to its Ability (pi)
+                option_to_ability = {entry["Option"]: entry["Ability (pi)"] for entry in bt_results}
+                model_results[model_name] = option_to_ability
+            except Exception as e:  # noqa: BLE001
+                print(f"Error processing file {file_path}: {e}", file=sys.stderr)
+
+        # Create a DataFrame where rows are options (food items) and columns are model names.
+        df_results = pd.DataFrame(model_results)
+        df_results.sort_index(inplace=True)  # noqa: PD002
+
+        print("Bradley-Terry Ability Scores:")
+        print(df_results.to_string(float_format=lambda x: f"{x:.3f}"))
+
+        # Save the results to a CSV file.
+        output_csv = "results_bradley_terry.csv"
+        df_results.to_csv(output_csv, float_format="%.3f")
+        print(f"Results saved to {output_csv}")
