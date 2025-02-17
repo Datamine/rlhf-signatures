@@ -29,25 +29,25 @@ def compute_paired_order_bias(filename: str) -> None:
         return
 
     # Ensure the required columns exist
-    required_columns = {"Food A", "Food B", "Answer"}
+    required_columns = {"Option 1", "Option 2", "Answer"}
     if not required_columns.issubset(df.columns):
         print(f"Error: The CSV file must contain columns: {required_columns}")
         return
 
     # Create a canonical identifier for each food pair (order-independent)
     # Here, we simply sort the names to create a tuple key.
-    df["pair_id"] = df.apply(lambda row: tuple(sorted([str(row["Food A"]), str(row["Food B"])])), axis=1)
+    df["pair_id"] = df.apply(lambda row: tuple(sorted([str(row["Option 1"]), str(row["Option 2"])])), axis=1)
 
     # Assign an order indicator:
-    # order 0: Food A equals the first element in the sorted (canonical) pair.
+    # order 0: Option 1 equals the first element in the sorted (canonical) pair.
     # order 1: Otherwise.
     df["order"] = df.apply(
-        lambda row: 0 if str(row["Food A"]) == sorted([str(row["Food A"]), str(row["Food B"])])[0] else 1,
+        lambda row: 0 if str(row["Option 1"]) == sorted([str(row["Option 1"]), str(row["Option 2"])])[0] else 1,
         axis=1,
     )
 
-    # Create a binary indicator: True if Answer equals Food A (i.e., the first column)
-    df["first_selected"] = df["Answer"] == df["Food A"]
+    # Create a binary indicator: True if Answer equals Option 1 (i.e., the first column)
+    df["first_selected"] = df["Answer"] == df["Option 1"]
 
     # Group the data by the canonical food pair.
     grouped = df.groupby("pair_id")

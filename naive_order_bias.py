@@ -18,26 +18,26 @@ def compute_naive_order_bias(filename: str) -> None:
         return
 
     # Check that required columns exist
-    required_columns = {"Food A", "Food B", "Answer"}
+    required_columns = {"Option 1", "Option 2", "Answer"}
     if not required_columns.issubset(df.columns):
         print(f"Error: The CSV file must contain the columns: {required_columns}")
         return
 
-    # Count how many times the answer equals Food A or Food B
-    first_count = (df["Answer"] == df["Food A"]).sum()
-    second_count = (df["Answer"] == df["Food B"]).sum()
+    # Count how many times the answer equals Option 1 or Option 2
+    first_count = (df["Answer"] == df["Option 1"]).sum()
+    second_count = (df["Answer"] == df["Option 2"]).sum()
 
     total = first_count + second_count
 
-    print("Total valid comparisons (where Answer matched Food A or Food B):", total)
-    print("Number of times Answer equals 'Food A':", first_count)
-    print("Number of times Answer equals 'Food B':", second_count)
+    print("Total valid comparisons (where Answer matched Option 1 or Option 2):", total)
+    print("Number of times Answer equals 'Option 1':", first_count)
+    print("Number of times Answer equals 'Option 2':", second_count)
 
     # Binomial test:
     # Under the null hypothesis, the probability that the answer is in position A is 0.5.
     p_val_binom = binomtest(first_count, n=total, p=0.5, alternative="two-sided")
     print("\nBinomial Test:")
-    print(f"  Proportion of 'Food A' answers: {first_count / total:.3f}")
+    print(f"  Proportion of 'Option 1' answers: {first_count / total:.3f}")
     print(f"  p-value: {p_val_binom.pvalue:.3f}")
 
     # Chi-square goodness-of-fit test:

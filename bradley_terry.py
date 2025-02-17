@@ -75,13 +75,13 @@ def compute_hessian(beta: NDArray[np.float64], contests: NDArray[np.float64]) ->
 def compute_bt_for_file(filename: str) -> list[dict]:  # type: ignore[type-arg]
     # Read the CSV file.
     df = pd.read_csv(filename)
-    required_columns = ["Food A", "Food B", "Answer"]
+    required_columns = ["Option 1", "Option 2", "Answer"]
     if not all(col in df.columns for col in required_columns):
         print("CSV file must contain columns:", required_columns)
         sys.exit(1)
 
-    # Get the list of unique options (from both Food A and Food B)
-    options = pd.concat([df["Food A"], df["Food B"]]).unique()
+    # Get the list of unique options (from both Option 1 and Option 2)
+    options = pd.concat([df["Option 1"], df["Option 2"]]).unique()
     options = sorted(options)  # sort for consistency
     n = len(options)
     option_to_index = {option: i for i, option in enumerate(options)}
@@ -91,11 +91,11 @@ def compute_bt_for_file(filename: str) -> list[dict]:  # type: ignore[type-arg]
     contests = np.zeros((n, n))
 
     # Process each row of the dataframe.
-    # Each row is assumed to represent a contest between Food A and Food B.
+    # Each row is assumed to represent a contest between Option 1 and Option 2.
     # 'Answer' should be equal to one of these.
     for _, row in df.iterrows():
-        opt1 = row["Food A"]
-        opt2 = row["Food B"]
+        opt1 = row["Option 1"]
+        opt2 = row["Option 2"]
         winner = row["Answer"]
         i = option_to_index[opt1]
         j = option_to_index[opt2]

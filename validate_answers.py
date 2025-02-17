@@ -19,7 +19,7 @@ def validate_csv_files(directory: str) -> None:
                 reader = csv.DictReader(f)
 
                 # Check if required columns exist
-                required_columns = {"Answer", "Food A", "Food B"}
+                required_columns = {"Answer", "Option 1", "Option 2"}
                 if not required_columns.issubset(reader.fieldnames):  # type: ignore[arg-type]
                     print(f"Error: File {csv_file} is missing one or more required columns: {required_columns}")
                     continue
@@ -27,13 +27,13 @@ def validate_csv_files(directory: str) -> None:
                 for row_num, row in enumerate(reader, start=2):  # starting at 2 assuming header is line 1
                     # Use strip() to remove any surrounding whitespace
                     answer = row.get("Answer")
-                    food_a = row.get("Food A")
-                    food_b = row.get("Food B")
+                    food_a = row.get("Option 1")
+                    food_b = row.get("Option 2")
 
                     if answer not in (food_a, food_b):
                         print(
                             f"Error in file '{csv_file}', row {row_num}: Answer '{answer}' "
-                            f"is not equal to Food A '{food_a}' or Food B '{food_b}'.",
+                            f"is not equal to Option 1 '{food_a}' or Option 2 '{food_b}'.",
                         )
         except Exception as e:  # noqa: BLE001
             print(f"Failed to process file '{csv_file}': {e}")

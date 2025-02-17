@@ -17,7 +17,7 @@ precision_message = "Answer with only and exactly one of these two options."
 
 with open("questions.csv", "w", newline="") as csvfile:
     writer = csv.writer(csvfile)
-    writer.writerow(["Wording Style", "Food A", "Food B", "Question"])
+    writer.writerow(["Wording Style", "Option 1", "Option 2", "Question"])
 
     for a in foods:
         for b in foods:
