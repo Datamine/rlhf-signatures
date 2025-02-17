@@ -27,13 +27,13 @@ def validate_csv_files(directory: str) -> None:
                 for row_num, row in enumerate(reader, start=2):  # starting at 2 assuming header is line 1
                     # Use strip() to remove any surrounding whitespace
                     answer = row.get("Answer")
-                    food_a = row.get("Option 1")
-                    food_b = row.get("Option 2")
+                    option_a = row.get("Option 1")
+                    option_b = row.get("Option 2")
 
-                    if answer not in (food_a, food_b):
+                    if answer not in (option_a, option_b):
                         print(
                             f"Error in file '{csv_file}', row {row_num}: Answer '{answer}' "
-                            f"is not equal to Option 1 '{food_a}' or Option 2 '{food_b}'.",
+                            f"is not equal to Option 1 '{option_a}' or Option 2 '{option_b}'.",
                         )
         except Exception as e:  # noqa: BLE001
             print(f"Failed to process file '{csv_file}': {e}")

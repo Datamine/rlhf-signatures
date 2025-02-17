@@ -3,6 +3,7 @@ import csv
 import os
 import re
 import sys
+from typing import Optional
 
 from llm_interface import ALL_MODELS, GeneralClient
 
@@ -95,13 +96,12 @@ async def process_model_instance(
         await asyncio.gather(*tasks)
 
 
-def load_questions() -> list[list[str]]:
+def load_questions(questions_filename: str) -> list[list[str]]:
     """
     Synchronously load questions from 'questions.csv' and append an empty "Answer" field.
     The first row is assumed to be the header.
     """
     questions = []
-    questions_filename = sys.argv[1]
     with open(questions_filename, newline="") as f:
         reader = csv.reader(f)
         header = next(reader)  # Read header row
@@ -114,21 +114,28 @@ def load_questions() -> list[list[str]]:
     return questions
 
 
-async def process_all_questions(questions: list[list[str]]) -> None:
+async def process_all_questions(questions: list[list[str]], optional_model: Optional[str] = None) -> None:
     """
     Asynchronously process the questions using all API model instances.
     """
     tasks = []
     for model_instance in ALL_MODELS:
-        tasks.append(  # noqa: PERF401
+        # if a specific model has been selected, only pick those tasks
+        if optional_model and optional_model != model_instance.model:
+            continue
+        tasks.append(
             asyncio.create_task(process_model_instance(model_instance, questions)),
         )
     await asyncio.gather(*tasks)
 
 
 if __name__ == "__main__":
+    # optional model selection
+    questions_filename = sys.argv[1]
+    optional_model = sys.argv[2] if len(sys.argv) > 2 else None
+
     # First, synchronously load the questions from CSV.
-    questions = load_questions()
+    questions = load_questions(questions_filename)
 
     # Then, use asyncio to process the questions concurrently.
-    asyncio.run(process_all_questions(questions))
+    asyncio.run(process_all_questions(questions, optional_model=optional_model))

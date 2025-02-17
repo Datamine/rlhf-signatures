@@ -34,7 +34,7 @@ def compute_paired_order_bias(filename: str) -> None:
         print(f"Error: The CSV file must contain columns: {required_columns}")
         return
 
-    # Create a canonical identifier for each food pair (order-independent)
+    # Create a canonical identifier for each option pair (order-independent)
     # Here, we simply sort the names to create a tuple key.
     df["pair_id"] = df.apply(lambda row: tuple(sorted([str(row["Option 1"]), str(row["Option 2"])])), axis=1)
 
@@ -49,7 +49,7 @@ def compute_paired_order_bias(filename: str) -> None:
     # Create a binary indicator: True if Answer equals Option 1 (i.e., the first column)
     df["first_selected"] = df["Answer"] == df["Option 1"]
 
-    # Group the data by the canonical food pair.
+    # Group the data by the canonical option pair.
     grouped = df.groupby("pair_id")
 
     # For each pair, compute the proportion of responses in which the first column was selected,
@@ -81,10 +81,10 @@ def compute_paired_order_bias(filename: str) -> None:
         return
 
     res_df = pd.DataFrame(results)
-    print("Summary of paired proportions by food pair (order 0 vs. order 1):")
+    print("Summary of paired proportions by option pair (order 0 vs. order 1):")
     print(res_df[["pair_id", "p0", "p1", "n0", "n1"]])
 
-    # Perform a paired t-test on the proportions across food pairs.
+    # Perform a paired t-test on the proportions across option pairs.
     t_stat, p_val = ttest_rel(res_df["p0"], res_df["p1"])
 
     print("\nPaired t-test on the proportions (order 0 minus order 1):")

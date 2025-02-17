@@ -199,7 +199,7 @@ if __name__ == "__main__":
             except Exception as e:  # noqa: BLE001
                 print(f"Error processing file {file_path}: {e}", file=sys.stderr)
 
-        # Create a DataFrame where rows are options (food items) and columns are model names.
+        # Create a DataFrame where rows are choice options and columns are model names.
         df_results = pd.DataFrame(model_results)
         df_results.sort_index(inplace=True)  # noqa: PD002
 
