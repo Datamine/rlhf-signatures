@@ -80,7 +80,7 @@ Wording Style,Food A,Food B,Question,Answer
 4,Ramen,Samosa,Which is more delicious? Ramen or Samosa? ... Answer with only and exactly one of these two options.,Ramen
 5,Ramen,Samosa,What's more delicious -- Ramen or Samosa? Answer with only and exactly one of these two options.,Ramen
 1,Ramen,Jollof Rice,What is more delicious? Ramen or Jollof Rice? Answer with only and exactly one of these two options.,Ramen
-2,Ramen,Jollof Rice,Which is the more delicious? Ramen or Jollof Rice? Answer with only and exactly one of these two options.,ramen
+2,Ramen,Jollof Rice,Which is the more delicious? Ramen or Jollof Rice? Answer with only and exactly one of these two options.,Ramen
 3,Ramen,Jollof Rice,What's more delicious: Ramen or Jollof Rice? Answer with only and exactly one of these two options.,Ramen
 4,Ramen,Jollof Rice,Which is more delicious? Ramen or Jollof Rice? ... Answer with only and exactly one of these two options.,Ramen
 5,Ramen,Jollof Rice,What's more delicious -- Ramen or Jollof Rice? Answer with only and exactly one of these two options.,Ramen
@@ -225,7 +225,7 @@ Wording Style,Food A,Food B,Question,Answer
 4,Souvlaki,Lechon,Which is more delicious? Souvlaki or Lechon? ... Answer with only and exactly one of these two options.,Souvlaki
 5,Souvlaki,Lechon,What's more delicious -- Souvlaki or Lechon? Answer with only and exactly one of these two options.,Souvlaki
 1,Falafel,Tacos,What is more delicious? Falafel or Tacos? Answer with only and exactly one of these two options.,Tacos
-2,Falafel,Tacos,Which is the more delicious? Falafel or Tacos? Answer with only and exactly one of these two options.,tacos
+2,Falafel,Tacos,Which is the more delicious? Falafel or Tacos? Answer with only and exactly one of these two options.,Tacos
 3,Falafel,Tacos,What's more delicious: Falafel or Tacos? Answer with only and exactly one of these two options.,Tacos
 4,Falafel,Tacos,Which is more delicious? Falafel or Tacos? ... Answer with only and exactly one of these two options.,Tacos
 5,Falafel,Tacos,What's more delicious -- Falafel or Tacos? Answer with only and exactly one of these two options.,Falafel
@@ -310,7 +310,7 @@ Wording Style,Food A,Food B,Question,Answer
 4,Banh mì,Jollof Rice,Which is more delicious? Banh mì or Jollof Rice? ... Answer with only and exactly one of these two options.,Banh mì
 5,Banh mì,Jollof Rice,What's more delicious -- Banh mì or Jollof Rice? Answer with only and exactly one of these two options.,Banh mì
 1,Banh mì,Lechon,What is more delicious? Banh mì or Lechon? Answer with only and exactly one of these two options.,Banh mì
-2,Banh mì,Lechon,Which is the more delicious? Banh mì or Lechon? Answer with only and exactly one of these two options.,banh mì
+2,Banh mì,Lechon,Which is the more delicious? Banh mì or Lechon? Answer with only and exactly one of these two options.,Banh mì
 3,Banh mì,Lechon,What's more delicious: Banh mì or Lechon? Answer with only and exactly one of these two options.,Banh mì
 4,Banh mì,Lechon,Which is more delicious? Banh mì or Lechon? ... Answer with only and exactly one of these two options.,Lechon
 5,Banh mì,Lechon,What's more delicious -- Banh mì or Lechon? Answer with only and exactly one of these two options.,Banh mì

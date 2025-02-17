@@ -13,6 +13,7 @@ And you're good to go.
 1. Optional: run `generate_questions.py` to generate questions.csv. You need this only if you want to modify the questions.
 2. Run `get_answers.py`. This is resistant to errors, and will skip over previously answered questions.
 3. Run `merge_spreadsheets.py` to combine the answers back with the questions. You need this only because of an oversight on my part. (See TODO)
+4. Run `validate_answers.py dataset/` to check all the answers for validity. There's a small amount of cleanup that may be necessary.
 
 ### TODO
 1. Fix `get_answers.py` to replicate the question text when writing answers, so we don't need `merge_spreadsheets.py`.
