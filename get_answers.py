@@ -2,6 +2,7 @@ import asyncio
 import csv
 import os
 import re
+import sys
 
 from llm_interface import ALL_MODELS, GeneralClient
 
@@ -100,7 +101,8 @@ def load_questions() -> list[list[str]]:
     The first row is assumed to be the header.
     """
     questions = []
-    with open("questions_short.csv", newline="") as f:
+    questions_filename = sys.argv[1]
+    with open(questions_filename, newline="") as f:
         reader = csv.reader(f)
         header = next(reader)  # Read header row
         header.append("Answer")  # Add the new "Answer" column

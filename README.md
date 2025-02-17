@@ -35,7 +35,8 @@ for every question that asks the LLM to choose between Option A and Option B, th
 As the later sections show, some models have significant ordering biases, so creating question sets that are perfectly symmetrical with respect to ordering is
 important to counteract any biasing effects.
 
-3. Run `get_answers.py`. This will query all the APIs with the questions from `questions.csv`. It is designed to be robust errors/interruptions, and therefore handles
+3. Run `get_answers.py questions/questions.csv`. This will query all the APIs with the questions from `questions.csv`. (You can use a different Questions file, of course. But beware of line 38, the script assumes that the actual question itself is in the fourth column of the CSV.)
+It is designed to be robust errors/interruptions, and therefore handles
 every single row as a separate file-write. It will skip over all previously written questions. Pay attention to the logs in case of rate limiting, as I encountered with Gemini 2.0 Pro.
 
 4. Run `validate_answers.py dataset/` to check all the answers for validity. There's a small amount of cleanup that may be necessary: Gemini's models terminate all their answers with a newline, and various models will insert periods, and occasionally answer with a whole sentence.
@@ -63,6 +64,8 @@ I couldn't find a hosted version of [Bloom-176B](https://huggingface.co/bigscien
 2. Combine `naive_order_bias.py` and `paired_order_bias.py` into one file and  have them output to a spreadsheet, rather than printing the results.
 
 3. Write an explanation of the results section.
+
+4. Rewrite `get_answers.py` to not have a magic number for the index of the Question in the spreadsheet row, but rather infer it from the header.
 
 ### FAQ
 
