@@ -68,7 +68,7 @@ async def process_model_instance(
     For a given model instance, process all questions and write answers to answers_[model].csv.
     The output file will include the original question row (all columns) with the answer in the final column.
     """
-    csv_filename = safe_filename(f"answers_{model_instance.model}.csv")
+    csv_filename = safe_filename(f"{model_instance.model}.csv")
 
     # Write header row if the file doesn't exist.
     if not os.path.exists(csv_filename):

@@ -190,7 +190,7 @@ if __name__ == "__main__":
                 continue
 
             # Model name is taken from the filename (without extension)
-            model_name = os.path.splitext(os.path.basename(file_path))[0].replace("merged_answers_", "")
+            model_name = os.path.splitext(os.path.basename(file_path))[0]
             try:
                 bt_results = compute_bt_for_file(file_path)
                 # Extract a mapping from Option to its Ability (pi)
@@ -207,6 +207,6 @@ if __name__ == "__main__":
         print(df_results.to_string(float_format=lambda x: f"{x:.3f}"))
 
         # Save the results to a CSV file.
-        output_csv = "results_bradley_terry.csv"
+        output_csv = "bradley_terry.csv"
         df_results.to_csv(output_csv, float_format="%.3f")
         print(f"Results saved to {output_csv}")

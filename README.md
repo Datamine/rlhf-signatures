@@ -55,6 +55,15 @@ i.e. as a table over all the Options and the Models.
 
 ### TODO
 
+1. Find a good non-RLHF benchmark model.
 I couldn't find a good non-RLHF benchmark model.
 I tried [EleutherAI/GPT-NeoX-20B](https://huggingface.co/EleutherAI/gpt-neox-20b), but it was too bad to to be useful.
 I couldn't find a hosted version of [Bloom-176B](https://huggingface.co/bigscience/bloom).
+
+2. Combine `naive_order_bias.py` and `paired_order_bias.py` into one file and  have them output to a spreadsheet, rather than printing the results.
+
+3. Write an explanation of the results section.
+
+### Questions?
+
+Write to contact@johnloeber.com
