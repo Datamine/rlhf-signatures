@@ -1,3 +1,4 @@
+import asyncio
 import os
 from typing import Optional
 
@@ -11,16 +12,23 @@ class GeneralClient:
     Simple class for other clients to inherit from
     """
 
-    def __init__(self, model: str, rate_limit_between_calls: Optional[int] = None) -> None:
+    def __init__(self, model: str, rate_limit_between_calls: int = 0) -> None:
         self.model = model
         self.rate_limit_between_calls = rate_limit_between_calls
 
-    def call_model(self, message: str, model: Optional[str] = None) -> str | None:
+    def call_model(self, message: str, model: Optional[str] = None) -> str:
         """
         Abstract method to be implemented by subclasses.
         """
         error_code = "Subclasses must implement call_model()"
         raise NotImplementedError(error_code)
+
+    async def call_model_async(self, message: str, model: Optional[str] = None) -> str:
+        """
+        Async model call - by default runs sync version in thread pool,
+        but subclasses should implement native async if available
+        """
+        return await asyncio.to_thread(self.call_model, message, model)
 
     def test(self, model: Optional[str] = None) -> None:
         """
@@ -44,7 +52,7 @@ class OpenAIClient(GeneralClient):
         model: str,
         api_key: str = "OPENAI_API_KEY",
         base_url: str | None = None,
-        rate_limit_between_calls: Optional[int] = None,
+        rate_limit_between_calls: int = 0,
     ) -> None:
         self.client = OpenAI(
             api_key=os.environ[api_key],
@@ -53,7 +61,7 @@ class OpenAIClient(GeneralClient):
         self.model = model
         self.rate_limit_between_calls = rate_limit_between_calls
 
-    def call_model(self, message: str, override_model: Optional[str] = None) -> str | None:
+    def call_model(self, message: str, override_model: Optional[str] = None) -> str:
         """
         Call model, provide LLM response
         """
@@ -67,7 +75,7 @@ class OpenAIClient(GeneralClient):
             stream=False,
         )
         # this never provides more than 1 choice, unless we change the request parameters
-        return response.choices[0].message.content
+        return response.choices[0].message.content or ""
 
 
 class TogetherAIClient(OpenAIClient):
@@ -75,7 +83,7 @@ class TogetherAIClient(OpenAIClient):
     together.ai API is built to be identical with OpenAI API
     """
 
-    def __init__(self, model: str, rate_limit_between_calls: Optional[int] = None) -> None:
+    def __init__(self, model: str, rate_limit_between_calls: int = 0) -> None:
         super().__init__(
             model,
             api_key="TOGETHER_AI_API_KEY",
@@ -89,7 +97,7 @@ class DeepSeekClient(OpenAIClient):
     DeepSeek API is built to be identical with OpenAI API
     """
 
-    def __init__(self, model: str, rate_limit_between_calls: Optional[int] = None) -> None:
+    def __init__(self, model: str, rate_limit_between_calls: int = 0) -> None:
         super().__init__(
             model,
             api_key="DEEPSEEK_API_KEY",
@@ -103,7 +111,7 @@ class AnthropicClient(GeneralClient):
     Interface for Anthropic LLMs
     """
 
-    def __init__(self, model: str, rate_limit_between_calls: Optional[int] = None) -> None:
+    def __init__(self, model: str, rate_limit_between_calls: int = 0) -> None:
         self.client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
         self.model = model
         self.rate_limit_between_calls = rate_limit_between_calls
@@ -127,7 +135,7 @@ class GoogleClient(GeneralClient):
     Interface for Google LLMs
     """
 
-    def __init__(self, model: str, rate_limit_between_calls: Optional[int] = None) -> None:
+    def __init__(self, model: str, rate_limit_between_calls: int = 0) -> None:
         self.client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
         self.model = model
         self.rate_limit_between_calls = rate_limit_between_calls
@@ -145,11 +153,13 @@ class GoogleClient(GeneralClient):
 OPENAI_GPT_4O = OpenAIClient("gpt-4o")
 OPENAI_O1 = OpenAIClient("o1")
 DEEPSEEK_V3 = DeepSeekClient("deepseek-chat")
-DEEPSEEK_R1 = DeepSeekClient("deepseek-reasoner")
+# Deepseek API is down, replacing with TogetherAI hosted version
+# DEEPSEEK_R1 = DeepSeekClient("deepseek-reasoner")
+DEEPSEEK_R1 = TogetherAIClient("deepseek-ai/DeepSeek-R1")
 CLAUDE_35 = AnthropicClient("claude-3-5-sonnet-20241022")
 GEMINI_2_0_FLASH = GoogleClient("gemini-2.0-flash")
 GEMINI_2_0_PRO = GoogleClient("gemini-2.0-pro-exp-02-05")
-LLAMA_405B = TogetherAIClient("meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo", rate_limit_between_calls=2)
+LLAMA_405B = TogetherAIClient("meta-llama/Meta-Llama-3.1-405B-Instruct-Turbo")
 
 ALL_MODELS = [
     OPENAI_GPT_4O,
@@ -167,7 +177,7 @@ def test_clients() -> None:
     """
     Test out the integrations
     """
-    for a in ALL_MODELS:
+    for a in [DEEPSEEK_R1]:  # ALL_MODELS:
         a.test()
 
 

@@ -67,6 +67,9 @@ I couldn't find a hosted version of [Bloom-176B](https://huggingface.co/bigscien
 
 4. Rewrite `get_answers.py` to not have a magic number for the index of the Question in the spreadsheet row, but rather infer it from the header.
 
+5. my asyncio code is actually sequential. need to fix
+
+
 ### FAQ
 
 **Q: How do I contact you with my question?**
