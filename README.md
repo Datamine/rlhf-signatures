@@ -40,7 +40,7 @@ It is designed to be robust errors/interruptions, and therefore handles
 every single row as a separate file-write. It will skip over all previously written questions. Pay attention to the logs in case of rate limiting, as I encountered with Gemini 2.0 Pro.
 
 4. Run `validate_answers.py dataset/` to check all the answers for validity. There's a small amount of cleanup that may be necessary: Gemini's models terminate all their answers with a newline, and various models will insert periods, and occasionally answer with a whole sentence.
-This takes only a few minutes to review and clean up in Excel or Vim -- I recommend cleaning up the data yourself, as it's a good chance to look closely at it, run a sanity chec, and notice any patterns.
+This takes only a few minutes to review and clean up in Excel or Vim -- I recommend cleaning up the data yourself, as it's a good chance to look closely at it, run a sanity check, and notice any patterns.
 
 5. Run `naive_order_bias.py` on each of your answer files to test whether the LLM is systematically biased toward answering with the first (or second) option.
 It outputs a Binomial Test and a Chi-Square Test against the Null Hypothesis that there is no ordering bias.
