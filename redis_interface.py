@@ -1,3 +1,4 @@
+import json
 import re
 from typing import Optional
 
@@ -12,7 +13,7 @@ REDIS_INSTANCE = redis.Redis(
     port=6379,
     decode_responses=True,
     password=REDIS_PASSWORD,
-    db="rlhf_signatures",
+    db=0,
 )
 
 
@@ -64,11 +65,11 @@ class SpreadsheetRedisProcessor:
             raise ValueError(f"LLM model '{llm_model}' not found in the list of managed LLMs.")  # noqa:TRY003,EM102
 
         lock_key = f"lock:{llm_model}:{question}"
-        with self.redis_instance.lock(lock_key, timeout=10):
+        with self.redis_instance.lock(lock_key, timeout=10, blocking=True):
             # Check if the question exists in the Redis hash for the given llm_model.
-            if not self.redis_instance.hexists(llm_model, question):
+            if not self.redis_instance.hexists(llm_model.model_name, question):
                 raise ValueError(f"Question '{question}' not found in Redis hash for LLM model '{llm_model}'.")  # noqa:TRY003,EM102
-            self.redis_instance.hset(llm_model, question, answer)
+            self.redis_instance.hset(llm_model.model_name, question, answer)
 
     def get_next_unprocessed_question(self, llm_model: GeneralClient) -> Optional[str]:
         """
@@ -87,18 +88,17 @@ class SpreadsheetRedisProcessor:
         for question, status in questions.items():
             if status == "":  # Found an unprocessed (blank) question.
                 lock_key = f"lock:{llm_model}:{question}"
-                lock = self.redis_instance.lock(lock_key, timeout=10)
-                # Attempt to acquire the lock without blocking.
-                if lock.acquire(blocking=False):
-                    # Double-check that the question's status is still blank.
-                    current_status = self.redis_instance.hget(llm_model.model_name, question)
-                    if current_status == "":
-                        self.redis_instance.hset(llm_model.model_name, question, "processing")
-                        lock.release()
-                        return question
-                    else:
-                        # If the status changed meanwhile, release the lock.
-                        lock.release()
+                try:
+                    # Attempt to acquire the lock in a non-blocking manner.
+                    with self.redis_instance.lock(lock_key, timeout=1, blocking=False):
+                        # Double-check that the question's status is still blank.
+                        current_status = self.redis_instance.hget(llm_model.model_name, question)
+                        if current_status == "":
+                            self.redis_instance.hset(llm_model.model_name, question, "processing")
+                            return question
+                except redis.exceptions.LockError:
+                    # The lock wasn't acquired; continue to the next question.
+                    continue
         return None
 
     def export_answers(self, original_file_path: str) -> None:
@@ -131,21 +131,21 @@ class SpreadsheetRedisProcessor:
         It also prints the list of questions for each model.
         """
         for model in self.llm_models:
-            entries: dict[str, str] = self.redis_instance.hgetall(model.model_name)
+            entries = self.redis_instance.hgetall(model.model_name)
             total = len(entries)
             not_processed = 0
             processing = 0
             processed = 0
 
-            for _, val in entries.values():
-                if not val:
+            for val in entries.values():
+                if val == "":
                     not_processed += 1
                 elif val == "processing":
                     processing += 1
                 else:
                     processed += 1
 
-            print(f"--- Stats for LLM model '{model}' ---")
+            print(f"--- Stats for LLM model '{model.model_name}' ---")
             print(f"Total questions: {total}")
             print(f"Not processed: {not_processed}")
             print(f"Processing: {processing}")
@@ -177,3 +177,25 @@ def safe_filename(filename: str) -> str:
     Only allows letters, digits, underscores, hyphens, and dots.
     """
     return re.sub(r"[^\w\-.]", "_", filename)
+
+
+def print_all() -> None:
+    data = {}
+    for key in REDIS_INSTANCE.scan_iter("*"):
+        key_type = REDIS_INSTANCE.type(key)  # type: ignore[no-untyped-call]
+        if key_type == "string":
+            data[key] = REDIS_INSTANCE.get(key)
+        elif key_type == "hash":
+            data[key] = REDIS_INSTANCE.hgetall(key)  # type: ignore[assignment]
+
+    json_data = json.dumps(data, indent=2)
+    print(json_data)
+
+
+def test_redis() -> None:
+    REDIS_INSTANCE.set("foo", "working!")
+    print(REDIS_INSTANCE.get("foo"))
+
+
+if __name__ == "__main__":
+    test_redis()
