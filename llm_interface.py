@@ -13,7 +13,7 @@ class GeneralClient:
     """
 
     def __init__(self, model: str, rate_limit_between_calls: int = 0) -> None:
-        self.model = model
+        self.model_name = model
         self.rate_limit_between_calls = rate_limit_between_calls
 
     def call_model(self, message: str, model: Optional[str] = None) -> str:
@@ -39,7 +39,7 @@ class GeneralClient:
             "Answer with only and exactly one of these two options.",
             model,
         )
-        print(model or self.model, "\t", reply)
+        print(model or self.model_name, "\t", reply)
 
 
 class OpenAIClient(GeneralClient):
@@ -58,7 +58,7 @@ class OpenAIClient(GeneralClient):
             api_key=os.environ[api_key],
             base_url=base_url,
         )
-        self.model = model
+        self.model_name = model
         self.rate_limit_between_calls = rate_limit_between_calls
 
     def call_model(self, message: str, override_model: Optional[str] = None) -> str:
@@ -66,7 +66,7 @@ class OpenAIClient(GeneralClient):
         Call model, provide LLM response
         """
         # use the override if supplied, otherwise use default from instantiation
-        model_to_use = override_model or self.model
+        model_to_use = override_model or self.model_name
         response = self.client.chat.completions.create(
             model=model_to_use,
             messages=[
@@ -113,7 +113,7 @@ class AnthropicClient(GeneralClient):
 
     def __init__(self, model: str, rate_limit_between_calls: int = 0) -> None:
         self.client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-        self.model = model
+        self.model_name = model
         self.rate_limit_between_calls = rate_limit_between_calls
 
     def call_model(self, message: str, override_model: Optional[str] = None) -> str:
@@ -121,7 +121,7 @@ class AnthropicClient(GeneralClient):
         Call model, provide LLM response
         """
         # use the override if supplied, otherwise use default from instantiation
-        model_to_use = override_model or self.model
+        model_to_use = override_model or self.model_name
         response = self.client.messages.create(
             model=model_to_use,
             max_tokens=1024,
@@ -137,7 +137,7 @@ class GoogleClient(GeneralClient):
 
     def __init__(self, model: str, rate_limit_between_calls: int = 0) -> None:
         self.client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
-        self.model = model
+        self.model_name = model
         self.rate_limit_between_calls = rate_limit_between_calls
 
     def call_model(self, message: str, override_model: Optional[str] = None) -> str:
@@ -145,7 +145,7 @@ class GoogleClient(GeneralClient):
         Call model, provide LLM response
         """
         # use the override if supplied, otherwise use default from instantiation
-        model_to_use = override_model or self.model
+        model_to_use = override_model or self.model_name
         response = self.client.models.generate_content(model=model_to_use, contents=message)
         return response.text  # type: ignore[no-any-return]
 
@@ -155,7 +155,7 @@ OPENAI_O1 = OpenAIClient("o1")
 DEEPSEEK_V3 = DeepSeekClient("deepseek-chat")
 # Deepseek API is down, replacing with TogetherAI hosted version
 # DEEPSEEK_R1 = DeepSeekClient("deepseek-reasoner")
-DEEPSEEK_R1 = TogetherAIClient("deepseek-ai/DeepSeek-R1")
+DEEPSEEK_R1 = TogetherAIClient("deepseek-ai/DeepSeek-R1", rate_limit_between_calls=21)
 CLAUDE_35 = AnthropicClient("claude-3-5-sonnet-20241022")
 GEMINI_2_0_FLASH = GoogleClient("gemini-2.0-flash")
 GEMINI_2_0_PRO = GoogleClient("gemini-2.0-pro-exp-02-05")
