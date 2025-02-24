@@ -26,7 +26,7 @@ def validate_csv_files(directory: str) -> None:
 
                 for row_num, row in enumerate(reader, start=2):  # starting at 2 assuming header is line 1
                     # Use strip() to remove any surrounding whitespace
-                    answer = row.get("Answer")
+                    answer = row.get("Answer").strip().strip(".")
                     option_a = row.get("Option 1")
                     option_b = row.get("Option 2")
 
@@ -37,7 +37,7 @@ def validate_csv_files(directory: str) -> None:
                         )
         except Exception as e:  # noqa: BLE001
             print(f"Failed to process file '{csv_file}': {e}")
-
+    print("Finished!")
 
 if __name__ == "__main__":
     # Specify the directory containing CSV files

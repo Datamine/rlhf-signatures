@@ -56,7 +56,7 @@ class GeneralClient:
             "Answer with only and exactly one of these two options.",
             model,
         )
-        print(model or self.model_name, "\t", reply)
+        print(model or self.model_name, "\t", self.base_url, reply)
 
 
 class OpenAIClient(GeneralClient):
@@ -165,8 +165,8 @@ class GoogleClient(GeneralClient):
 OPENAI_GPT_4O = OpenAIClient("gpt-4o")
 OPENAI_O1 = OpenAIClient("o1")
 # Deepseek API is down, replacing with TogetherAI hosted version
-# DEEPSEEK_V3 = DeepSeekClient("deepseek-chat")
-DEEPSEEK_V3 = TogetherAIClient("deepseek-ai/DeepSeek-V3")
+DEEPSEEK_V3 = DeepSeekClient("deepseek-chat")
+# DEEPSEEK_V3 = TogetherAIClient("deepseek-ai/DeepSeek-V3")
 # DEEPSEEK_R1 = DeepSeekClient("deepseek-reasoner")
 DEEPSEEK_R1 = TogetherAIClient("deepseek-ai/DeepSeek-R1", rate_limit_between_calls=21)
 CLAUDE_35 = AnthropicClient("claude-3-5-sonnet-20241022")

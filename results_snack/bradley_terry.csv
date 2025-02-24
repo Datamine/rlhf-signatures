@@ -1,0 +1,32 @@
+,DeepSeek,DeepSeek,OpenAI,OpenAI,Google,Anthropic,Meta
+,reasoner r1,chat v3,o1,gpt-4o,gemini-2.0-flash,claude-3-5-sonnet,Llama-3.1-405B
+Banana Cue,1.00,1.00,1.00,1.00,1.00,1.00,1.00
+Bánh rán,0.66,0.69,0.18,0.37,0.04,3.06,0.17
+Churros,26.20,1.28,9.66,0.29,0.42,13.52,1.64
+Goldfish Crackers,1.22,0.78,1.62,0.29,0.11,1.76,1.85
+Haribo Goldbears,39.59,0.96,2.68,0.12,0.42,1.17,0.90
+Loukoumades,2.10,0.88,0.36,0.44,0.24,2.04,0.44
+Ma'amoul,0.07,0.92,0.02,0.22,0.00,1.05,0.09
+Pocky,2.80,1.00,32.93,0.57,0.51,11.55,2.71
+Puff Puff,0.50,0.43,0.14,0.26,0.03,0.25,0.26
+Vada Pav,0.00,0.78,0.02,1.24,0.01,2.76,0.24
+,,,,,,,
+Pearson Correlations,,,,,,,
+,,DeepSeek,DeepSeek,OpenAI,OpenAI,Google,Anthropic
+,,reasoner r1,chat v3,o1,gpt-4o,gemini-2.0-flash,claude-3-5-sonnet
+DeepSeek,chat v3,0.508,,,,,
+OpenAI,o1,0.074,0.396,,,,
+OpenAI,gpt-4o,-0.419,0.025,0.009,,,
+Google,gemini-2.0-flash,0.255,0.576,0.334,0.286,,
+Anthropic,claude-3-5-sonnet,0.273,0.655,0.768,-0.030,0.247,
+Meta,Llama-3.1-405B,0.199,0.501,0.816,-0.056,0.477,0.687
+,,,,,,,
+Spearman Correlations,,,,,,,
+,,DeepSeek,DeepSeek,OpenAI,OpenAI,Google,Anthropic
+,,reasoner r1,chat v3,o1,gpt-4o,gemini-2.0-flash,claude-3-5-sonnet
+DeepSeek,chat v3,0.616,,,,,
+OpenAI,o1,0.903,0.646,,,,
+OpenAI,gpt-4o,-0.243,0.083,0.018,,,
+Google,gemini-2.0-flash,0.766,0.709,0.851,0.247,,
+Anthropic,claude-3-5-sonnet,0.358,0.317,0.467,0.340,0.201,
+Meta,Llama-3.1-405B,0.709,0.549,0.903,0.170,0.784,0.297
