@@ -37,6 +37,7 @@ ignore = [
     "UP007", # bad new union type annotation
     "PLR0913", # too many arguments to function def,
     "PD901", # dont call dfs df
+    "G004"
 ]
 
 [tool.mypy]

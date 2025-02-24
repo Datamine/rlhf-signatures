@@ -108,7 +108,7 @@ class SpreadsheetRedisProcessor:
         'answers_{llm_model}.csv'.
         """
         for llm_model in self.llm_models:
-            df = pd.read_excel(original_file_path)
+            df = pd.read_csv(original_file_path)
             if "Question" not in df.columns:
                 raise ValueError("Spreadsheet must contain a 'Question' column.")  # noqa:TRY003, EM101
 
